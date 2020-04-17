@@ -6,20 +6,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Categorieën
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Boeken</a>
-                      <a class="dropdown-item" href="#">Tafels</a>
-                      <a class="dropdown-item" href="#">Stoelen</a>
-                      <a class="dropdown-item" href="#">Banken</a>
-                      <a class="dropdown-item" href="#">Bureaus</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Categories">Categorieën<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
