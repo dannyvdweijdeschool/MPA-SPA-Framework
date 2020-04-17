@@ -8,6 +8,9 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        @yield('content')
+        @include("navbars.navbar")
+        <div class="container">
+            @yield('content')
+        </div>
     </body>
 </html>
