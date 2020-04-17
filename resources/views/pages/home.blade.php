@@ -2,6 +2,6 @@
 
 @section('content')
 
-<h1>home</h1>
+<h1>{{config("app.name", "MPA-SPA-Framework")}}</h1>
 
 @endsection
