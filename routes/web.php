@@ -11,5 +11,7 @@
 |
 */
 
-Route::get('/', 'PagesController@home');
-Route::get('/home', 'PagesController@home');
+Route::get("/", "PagesController@home");
+Route::get("/home", "PagesController@home");
+
+Route::resource("categories", "CategoriesController");
