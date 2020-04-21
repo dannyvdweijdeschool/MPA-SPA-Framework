@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function home(){
-        return view('pages.home');
+        $homeImage = asset('images/home_image.jpeg');
+        return view('pages.home')->with("homeImage", $homeImage);;
     }
 }
