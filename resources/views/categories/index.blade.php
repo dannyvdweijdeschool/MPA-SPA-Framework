@@ -6,7 +6,7 @@
     <h1>Categories</h1>
     @if(count($categories) > 0)
         @foreach($categories as $category)
-            <div class="well">
+            <div class="list-group-item">
                 <h3>{{$category->category_name}}</h3>
             </div>
         @endforeach
