@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class ProductsController extends Controller
 {
@@ -11,9 +12,11 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view("products.index");
+        $products = Product::where("category_id", $id)->get();
+        $products = $products->sortBy("product_name");
+        return view("products.index")->with("products", $products);
     }
 
     /**

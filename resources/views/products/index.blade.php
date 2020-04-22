@@ -2,6 +2,17 @@
 
 @section('content')
 
-<h1>products</h1>
+<div class="container">
+    <h1>products</h1>
+    @if(count($products) > 0)
+        @foreach($products as $product)
+            <div class="categoryContainer">
+                <h3><a href="#">{{$product->product_name}}</a></h3>
+            </div>
+        @endforeach
+    @else
+        <p>Er zijn geen producten gevonden.</p>
+    @endif
+</div>
 
 @endsection
