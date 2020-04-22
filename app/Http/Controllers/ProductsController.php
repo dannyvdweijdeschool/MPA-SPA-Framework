@@ -44,11 +44,12 @@ class ProductsController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     * @param  int  $productId
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $productId)
     {
-        $product = Product::where("product_id", $id)->get();
+        $product = Product::where("product_id", $productId)->get();
         return view("products.show")->with("product", $product);
     }
 
