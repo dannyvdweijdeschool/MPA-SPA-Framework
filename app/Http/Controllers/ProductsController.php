@@ -48,7 +48,8 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::where("product_id", $id)->get();
+        return view("products.show")->with("product", $product);
     }
 
     /**
