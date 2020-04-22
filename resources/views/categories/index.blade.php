@@ -8,7 +8,7 @@
         @if(count($categories) > 0)
             @foreach($categories as $category)
                 <div class="categoryContainer">
-                    <h3><a href="#">{{$category->category_name}}</a></h3>
+                    <h3><a href="/categories/{{$category->id}}/products">{{$category->category_name}}</a></h3>
                 </div>
             @endforeach
         @else
