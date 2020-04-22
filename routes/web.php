@@ -15,3 +15,4 @@ Route::get("/", "PagesController@home");
 Route::get("/home", "PagesController@home");
 
 Route::resource("categories", "CategoriesController");
+Route::resource("categories.products", "ProductsController");
