@@ -10892,6 +10892,10 @@ footer {
   background-color: #f8f9fa;
 }
 
+.contentContainer {
+  margin: 100px 0px 100px 0px;
+}
+
 #innerFooter {
   height: 40px;
   line-height: 40px;
@@ -10926,7 +10930,15 @@ footer {
   height: auto;
 }
 
-.list-group-item {
+#categoriesTitle {
+  margin-bottom: 20px;
+}
+
+.categoryContainer {
+  width: 100%;
+  height: auto;
   padding: 20px;
+  border: 1px solid #000;
+  margin-bottom: 30px;
 }
 
