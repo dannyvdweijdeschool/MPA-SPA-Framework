@@ -10942,3 +10942,18 @@ footer {
   margin-bottom: 30px;
 }
 
+#cart {
+  color: #000;
+  text-decoration: none;
+  margin: 0px 5px;
+  transition: 0.2s linear;
+}
+
+#cart:hover {
+  color: #aaa;
+}
+
+#login {
+  margin: 0px 10px;
+}
+

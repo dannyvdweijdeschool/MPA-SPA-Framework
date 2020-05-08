@@ -57,3 +57,22 @@ footer{
     border: 1px solid #000;
     margin-bottom: 30px;
 }
+
+#cart{
+    color: #000;
+    text-decoration: none;
+    margin: 0px 5px;
+    -webkit-transition: 0.2s linear;
+    -moz-transition: 0.2s linear;
+    -o-transition: 0.2s linear;
+    -ms-transition: 0.2s linear;
+    transition: 0.2s linear;
+}
+
+#cart:hover{
+    color: #aaa;
+}
+
+#login{
+    margin: 0px 10px;
+}
