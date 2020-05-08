@@ -14,5 +14,11 @@
                 </li>
             </ul>
         </div>
+        <a id="cart" href="#">
+            <i class="fas fa-shopping-cart"></i>
+            <span>0</span>
+        </a>
+        <a class="btn btn-primary" id="login" href="#">Login</a>
+        <a class="btn btn-primary" id="register" href="#">Registreer</a>
     </div>
 </nav>

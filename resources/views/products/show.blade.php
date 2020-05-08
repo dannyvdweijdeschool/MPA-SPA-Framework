@@ -9,6 +9,7 @@
         <p>{{$product[0]->product_materials}}</p>
         <p>&#x20ac;{{$product[0]->product_price}}-,</p>
         <a class="btn btn-primary" href="/categories/{{$product[0]->category_id}}/products">Ga terug</a>
+        <a class="btn btn-secondary" href="#">In Winkelwagen</a>
     </div>
 </div>
 
