@@ -14,9 +14,9 @@
                 </li>
             </ul>
         </div>
-        <a id="cart" href="#">
+        <a id="cart" href="/cart">
             <i class="fas fa-shopping-cart"></i>
-            <span>0</span>
+            <span>{{Session::has("cart") ? Session::get("cart")->totalQty : 0}}</span>
         </a>
         <a class="btn btn-primary" id="login" href="#">Login</a>
         <a class="btn btn-primary" id="register" href="#">Registreer</a>

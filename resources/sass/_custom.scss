@@ -1,4 +1,4 @@
-h3{
+h3, p{
     margin: 0px;
 }
 
@@ -50,7 +50,7 @@ footer{
     margin-bottom: 20px;
 }
 
-.categoryContainer{
+.categoryContainer, #cartContainer{
     width: 100%;
     height: auto;
     padding: 20px;
@@ -75,4 +75,41 @@ footer{
 
 #login{
     margin: 0px 10px;
+}
+
+#cartContainer{
+    margin: 0px;
+}
+
+.cartContainerRow{
+    width: 100%;
+    height: auto;
+    margin: 25px 0px 0px 0px;
+}
+
+.cartContainerRow:first-child{
+    margin: 0px;
+}
+
+.cartContainerRow h3, .cartContainerRow p{
+    display: inline-block;
+}
+
+.cartContainerRow h3{
+    width: 75%;
+}
+
+.cartContainerRow p{
+    margin: 0px 10px 0px 0px;
+}
+
+#cartTotalContainer{
+    width: 100%;
+    height: auto;
+    margin: 20px 0px 0px 0px;
+    border-top: solid #000 1px;
+}
+
+#cartTotalContainer h2{
+    margin: 20px 0px 5px 0px;
 }
