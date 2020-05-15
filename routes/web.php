@@ -13,7 +13,7 @@
 
 Route::get("/", "PagesController@home");
 Route::get("/home", "PagesController@home");
-Route::get("/add-to-cart/{id}", "ProductsController@addToCart");
+Route::post("/add-to-cart/{id}", "ProductsController@addToCart");
 Route::get("/cart", "ProductsController@showCart");
 
 Route::resource("categories", "CategoriesController");

@@ -3,14 +3,18 @@
 @section('content')
 
 <div class="container">
-    <div class="contentContainer">
-        <h1>{{$product[0]->product_name}}</h1>
-        <p>{{$product[0]->product_color}}</p>
-        <p>{{$product[0]->product_materials}}</p>
-        <p>&#x20ac;{{$product[0]->product_price}}-,</p>
-        <a class="btn btn-primary" href="/categories/{{$product[0]->category_id}}/products">Ga terug</a>
-    <a class="btn btn-secondary" href="/add-to-cart/{{$product[0]->product_id}}">In Winkelwagen</a>
-    </div>
+    <form action="/add-to-cart/{{$product[0]->product_id}}" method="POST">
+        @csrf
+        <div class="contentContainer">
+            <h1>{{$product[0]->product_name}}</h1>
+            <p>{{$product[0]->product_color}}</p>
+            <p>{{$product[0]->product_materials}}</p>
+            <p>&#x20ac;{{$product[0]->product_price}}-,</p>
+            <a class="btn btn-primary" href="/categories/{{$product[0]->category_id}}/products">Ga terug</a>
+            <input name="amount" type="number" value="1">
+            <button type="submit" class="btn btn-secondary">In Winkelwagen</button>
+        </div>
+    </form>
 </div>
 
 @endsection

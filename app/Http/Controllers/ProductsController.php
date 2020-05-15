@@ -43,9 +43,10 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function addToCart(Request $request, $itemId){
+        $amount = $request->input('amount');
         $product = Product::where("product_id", $itemId)->get();
         $cart = new Cart();
-        $cart->add($product[0], $product[0]->product_id);
+        $cart->add($product[0], $product[0]->product_id,$amount);
 
         $request->session()->put("cart", $cart);
         // dd($request->session()->get("cart"));
