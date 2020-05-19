@@ -69,7 +69,7 @@ class ProductsController extends Controller
         }
         $cart->checkAmountOfItems($ids, $amounts);
         $request->session()->put("cart", $cart);
-        return view("products.cart")->with("cart", $cart);
+        return redirect("cart")->with("cart", $cart);
     }
 
     /**
@@ -82,7 +82,7 @@ class ProductsController extends Controller
         $cart = new Cart();
         $cart->deleteItemFromCart($id);
         $request->session()->put("cart", $cart);
-        return view("products.cart")->with("cart", $cart);
+        return redirect("cart")->with("cart", $cart);
     }
 
     /**
@@ -92,7 +92,7 @@ class ProductsController extends Controller
      */
     public function showCart(){
         if(!Session::has("cart")){
-            return view("products.cart")->with("products", null);
+            return view("products.cart")->with("cart", null);
         }
         $cart = new Cart();
         return view("products.cart")->with("cart", $cart);

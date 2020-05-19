@@ -5,7 +5,7 @@
 <div class="container">
     <div class="contentContainer">
         <h1>Winkelwagen</h1>
-        @if($cart->items)
+        @if($cart != null)
             @if(count($cart->items) > 0)
                 <form action="/change-cart-items" method="POST">
                     @csrf
