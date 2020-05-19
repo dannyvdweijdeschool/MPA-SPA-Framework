@@ -37,6 +37,7 @@ class ProductsController extends Controller
 
     /**
      * Adds the chosen product to the shopping cart.
+     * 
      * @param int $itemId = id of the product.
      * @param $product = the product.
      * @param $cart = the cart that containts the item(s).
@@ -54,14 +55,26 @@ class ProductsController extends Controller
 
     /**
      * Changes the amount for the item(s) that the client has changed.
+     * 
+     * @param $amounts = The amounts of the inputs.
+     * @param $cart = everything thats in the cart.
+     * @param $ids = array with all the ids of the items in the cart.
      */
     public function changeCartItems(Request $request){
+        $amounts = [];
         $cart = new Cart();
-        $cart->getIdsInCart();
+        $ids = $cart->getIdsInCart();
+        foreach($ids as $id){
+            $amounts[$id] = $request->input('amount' . $id);
+        }
+        $cart->checkAmountOfItems($ids, $amounts);
+        $request->session()->put("cart", $cart);
+        return view("products.cart")->with("cart", $cart);
     }
 
     /**
      * Shows whats inside the cart.
+     * 
      * @param $cart = everything thats in the cart.
      */
     public function showCart(){

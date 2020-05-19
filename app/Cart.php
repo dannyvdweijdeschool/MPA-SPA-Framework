@@ -9,6 +9,11 @@ class Cart{
     public $totalQty = 0;
     public $totalPrice = 0;
 
+    /**
+     * Look if a cart already exists if so get those values.
+     * 
+     * @param $oldCart = The old cart with the values.
+     */
     public function __construct(){
         $oldCart = Session::has("cart") ? Session::get("cart") : null;
         if($oldCart){
@@ -20,6 +25,7 @@ class Cart{
 
     /**
      * Add a item to the cart.
+     * 
      * @param $storedItem = The item that is gonna be added.
      * @param $item = Item it self with all the info.
      * @param int $id = id of the selected item.
@@ -43,6 +49,7 @@ class Cart{
 
     /**
      * Gets all the ids from the items within the cart.
+     * 
      * @param $ids = Array with all the ids form the items that are in the cart.
      */
     public function getIdsInCart(){
@@ -50,5 +57,37 @@ class Cart{
         foreach($this->items as $item){
             array_push($ids, $item["item"]["product_id"]);
         }
+        return $ids;
+    }
+
+    /**
+     * Checks if the amount is still the same as before.
+     * 
+     * @param $ids = Array with all the ids form the items that are in the cart.
+     * @param int $amounts = The amounts taken from the inputs.
+     */
+    public function checkAmountOfItems($ids, $amounts){
+        foreach($ids as $id){
+            if($this->items[$id]["qty"] != $amounts[$id]){
+                $this->changeAmountOfItem($id,$this->items[$id],$amounts[$id]);
+            }
+        }
+    }
+
+    /**
+     * Changes the amount for this item and changes the total.
+     * 
+     * @param int $id = id of the item.
+     * @param $item = The item itself.
+     * @param int $newAmount = The new amount of the item.
+     */
+    public function changeAmountOfItem($id,$item,$newAmount){
+        $this->totalPrice -= $item["price"];
+        $this->totalQty -= $item["qty"];
+        $this->totalQty += $newAmount;
+        $item["qty"] = $newAmount;
+        $item["price"] = $item["qty"] * $item["item"]["product_price"];
+        $this->totalPrice += $item["price"];
+        $this->items[$id] = $item;
     }
 } 
