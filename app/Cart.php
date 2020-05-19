@@ -82,13 +82,17 @@ class Cart{
      * @param int $newAmount = The new amount of the item.
      */
     public function changeAmountOfItem($id,$item,$newAmount){
-        $this->totalPrice -= $item["price"];
-        $this->totalQty -= $item["qty"];
-        $this->totalQty += $newAmount;
-        $item["qty"] = $newAmount;
-        $item["price"] = $item["qty"] * $item["item"]["product_price"];
-        $this->totalPrice += $item["price"];
-        $this->items[$id] = $item;
+        if($newAmount <= 0){
+            $this->deleteItemFromCart($id);
+        }else{
+            $this->totalPrice -= $item["price"];
+            $this->totalQty -= $item["qty"];
+            $this->totalQty += $newAmount;
+            $item["qty"] = $newAmount;
+            $item["price"] = $item["qty"] * $item["item"]["product_price"];
+            $this->totalPrice += $item["price"];
+            $this->items[$id] = $item;
+        }
     }
 
     /**
