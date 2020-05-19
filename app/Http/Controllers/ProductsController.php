@@ -49,12 +49,20 @@ class ProductsController extends Controller
         $cart->add($product[0], $product[0]->product_id,$amount);
 
         $request->session()->put("cart", $cart);
-        // dd($request->session()->get("cart"));
         return redirect()->route("categories.index");
     }
 
     /**
+     * Changes the amount for the item(s) that the client has changed.
+     */
+    public function changeCartItems(Request $request){
+        $cart = new Cart();
+        $cart->getIdsInCart();
+    }
+
+    /**
      * Shows whats inside the cart.
+     * @param $cart = everything thats in the cart.
      */
     public function showCart(){
         if(!Session::has("cart")){

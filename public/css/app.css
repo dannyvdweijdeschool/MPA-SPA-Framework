@@ -10979,7 +10979,7 @@ footer {
 }
 
 .cartContainerRow h3 {
-  width: 75%;
+  width: 65%;
 }
 
 .cartContainerRow p {
@@ -10995,5 +10995,9 @@ footer {
 
 #cartTotalContainer h2 {
   margin: 20px 0px 5px 0px;
+}
+
+.inputAmount {
+  width: 50px;
 }
 

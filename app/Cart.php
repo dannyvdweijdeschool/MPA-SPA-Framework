@@ -17,8 +17,13 @@ class Cart{
             $this->totalPrice = $oldCart->totalPrice;
         }
     }
+
     /**
-     * @param $storedItem = the item that is gonna be added.
+     * Add a item to the cart.
+     * @param $storedItem = The item that is gonna be added.
+     * @param $item = Item it self with all the info.
+     * @param int $id = id of the selected item.
+     * @param int $amount = Amount of the selected item. 
      */
     public function add($item, $id,$amount){
         $storedItem = ["qty" => 0, "price" => $item->product_price, "item" => $item];
@@ -32,6 +37,18 @@ class Cart{
         $storedItem["price"] = $item->product_price * $storedItem["qty"];
         $this->items[$id] = $storedItem;
         $this->totalQty += $amount;
+        // += = $this->totalPrice = $this->totalPrice + $item->price
         $this->totalPrice += $storedItem["price"];
+    }
+
+    /**
+     * Gets all the ids from the items within the cart.
+     * @param $ids = Array with all the ids form the items that are in the cart.
+     */
+    public function getIdsInCart(){
+        $ids = [];
+        foreach($this->items as $item){
+            array_push($ids, $item["item"]["product_id"]);
+        }
     }
 } 
