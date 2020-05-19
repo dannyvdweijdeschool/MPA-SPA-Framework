@@ -31,7 +31,6 @@ class Cart{
         $storedItem["price"] = $item->product_price * $storedItem["qty"];
         $this->items[$id] = $storedItem;
         $this->totalQty += $amount;
-        // += = $this->totalPrice = $this->totalPrice + $item->price
         $this->totalPrice += $storedItem["price"];
     }
 } 
