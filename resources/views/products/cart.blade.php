@@ -5,10 +5,10 @@
 <div class="container">
     <div class="contentContainer">
         <h1>Winkelwagen</h1>
-        @if($products)
-            @if(count($products) > 0)
+        @if($cart->items)
+            @if(count($cart->items) > 0)
                 <div id="cartContainer">
-                @foreach($products as $product)
+                @foreach($cart->items as $product)
                     <div class="cartContainerRow">
                         <h3>{{$product["item"]["product_name"]}}</h3>
                         <p>Aantal stuks: {{$product["qty"]}}</p>
@@ -17,8 +17,8 @@
                 @endforeach
                 <div id="cartTotalContainer">
                     <h2>Betaling</h2>
-                    <p>Totaal aantal producten: {{Session::get("cart")->totalQty}}</p>
-                    <p>Totaal prijs: &#8364;{{Session::get("cart")->totalPrice}},-</p>
+                    <p>Totaal aantal producten: {{$cart->totalQty}}</p>
+                    <p>Totaal prijs: &#8364;{{$cart->totalPrice}},-</p>
                 </div>
                 </div>
             @else

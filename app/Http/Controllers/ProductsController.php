@@ -61,6 +61,6 @@ class ProductsController extends Controller
             return view("products.cart")->with("products", null);
         }
         $cart = new Cart();
-        return view("products.cart")->with("products", $cart->items);
+        return view("products.cart")->with("cart", $cart);
     }
 }
