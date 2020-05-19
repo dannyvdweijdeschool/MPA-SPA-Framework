@@ -73,6 +73,19 @@ class ProductsController extends Controller
     }
 
     /**
+     * Deletes the item form the list.
+     * 
+     * @param int $id = id of the item.
+     * @param $cart = everything thats in the cart.
+     */
+    public function deleteFromCart(Request $request,$id){
+        $cart = new Cart();
+        $cart->deleteItemFromCart($id);
+        $request->session()->put("cart", $cart);
+        return view("products.cart")->with("cart", $cart);
+    }
+
+    /**
      * Shows whats inside the cart.
      * 
      * @param $cart = everything thats in the cart.

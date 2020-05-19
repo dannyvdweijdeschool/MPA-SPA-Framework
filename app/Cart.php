@@ -90,4 +90,15 @@ class Cart{
         $this->totalPrice += $item["price"];
         $this->items[$id] = $item;
     }
+
+    /**
+     * Deletes the item form the list.
+     * 
+     * @param int $id = id of the item.
+     */
+    public function deleteItemFromCart($id){
+        $this->totalQty -= $this->items[$id]["qty"];
+        $this->totalPrice -= $this->items[$id]["price"];
+        unset($this->items[$id]);
+    }
 } 

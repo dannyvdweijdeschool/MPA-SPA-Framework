@@ -15,6 +15,7 @@ Route::get("/", "PagesController@home");
 Route::get("/home", "PagesController@home");
 Route::post("/add-to-cart/{id}", "ProductsController@addToCart");
 Route::post("/change-cart-items", "ProductsController@changeCartItems");
+Route::get("/delete-from-cart/{id}", "ProductsController@deleteFromCart");
 Route::get("/cart", "ProductsController@showCart");
 
 Route::resource("categories", "CategoriesController");
