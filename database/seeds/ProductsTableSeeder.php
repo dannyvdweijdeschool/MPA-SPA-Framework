@@ -16,7 +16,7 @@ class ProductsTableSeeder extends Seeder
             "product_color" => "bruin",
             "product_materials" => "Eikenhout",
             "product_price" => "440",
-            "category_id" => "3",
+            "category_id" => "1",
         ]);
         $product->save();
 
@@ -25,7 +25,7 @@ class ProductsTableSeeder extends Seeder
             "product_color" => "Licht Bruin",
             "product_materials" => "Steigerhout",
             "product_price" => "99",
-            "category_id" => "4",
+            "category_id" => "2",
         ]);
         $product->save();
 
@@ -34,7 +34,7 @@ class ProductsTableSeeder extends Seeder
             "product_color" => "Zwart/Grijs",
             "product_materials" => "Stof",
             "product_price" => "799",
-            "category_id" => "5",
+            "category_id" => "3",
         ]);
         $product->save();
 
@@ -43,7 +43,7 @@ class ProductsTableSeeder extends Seeder
             "product_color" => "Zwart",
             "product_materials" => "Metaal",
             "product_price" => "449",
-            "category_id" => "6",
+            "category_id" => "4",
         ]);
         $product->save();
 
@@ -52,7 +52,7 @@ class ProductsTableSeeder extends Seeder
             "product_color" => "Wit",
             "product_materials" => "MDF",
             "product_price" => "150",
-            "category_id" => "7",
+            "category_id" => "5",
         ]);
         $product->save();
     }

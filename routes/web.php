@@ -20,3 +20,9 @@ Route::get("/cart", "ProductsController@showCart");
 
 Route::resource("categories", "CategoriesController");
 Route::resource("categories.products", "ProductsController");
+
+Route::get("/signup", "UsersController@getSignup");
+Route::post("/signup", "UsersController@postSignup");
+Route::get("/signin", "UsersController@getSignin");
+Route::post("/signin", "UsersController@postSignin");
+Route::get("/user/profile", "UsersController@getProfile");

@@ -18,7 +18,9 @@
             <i class="fas fa-shopping-cart"></i>
             <span>{{Session::has("cart") ? Session::get("cart")->totalQty : 0}}</span>
         </a>
-        <a class="btn btn-primary" id="login" href="#">Login</a>
-        <a class="btn btn-primary" id="register" href="#">Registreer</a>
+        <a class="btn btn-primary" id="login" href="/signin">Login</a>
+        <a class="btn btn-primary" id="register" href="/signup">Registreer</a>
+        <a id="profile" href="user/profile">Profiel</a>
+        <a class="btn btn-primary" id="signout" href="/signout">Log uit</a>
     </div>
 </nav>
