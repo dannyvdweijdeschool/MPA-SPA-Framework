@@ -69,7 +69,7 @@ class ProductsController extends Controller
         }
         $cart->checkAmountOfItems($ids, $amounts);
         $request->session()->put("cart", $cart);
-        return redirect("cart")->with("cart", $cart);
+        return view("products.cart")->with("cart", $cart);
     }
 
     /**
@@ -82,7 +82,7 @@ class ProductsController extends Controller
         $cart = new Cart();
         $cart->deleteItemFromCart($id);
         $request->session()->put("cart", $cart);
-        return redirect("cart")->with("cart", $cart);
+        return view("products.cart")->with("cart", $cart);
     }
 
     /**
