@@ -13,7 +13,7 @@
                     @endforeach
                 </div>
             @endif
-            <form action="/signin" method="POST">
+            <form action="/user/signin" method="POST">
                 @csrf
                 <div class="formInputContainer">
                     <label for="email">E-mail:</label>

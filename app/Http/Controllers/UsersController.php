@@ -26,7 +26,7 @@ class UsersController extends Controller
         ]);
         $user->save();
 
-        return redirect("home");
+        return redirect()->route("pages.home");
     }
 
     public function getSignin(){
@@ -40,12 +40,17 @@ class UsersController extends Controller
         ]);
 
         if(Auth::attempt(["email" => $request->input("email"), "password" => $request->input("password")])){
-            return redirect("user/profile");
+            return redirect()->route("user.profile");
         }
         return redirect()->back();
     }
 
     public function getProfile(){
         return view("user.profile");
+    }
+
+    public function getLogout(){
+        Auth::logout();
+        return redirect()->back();
     }
 }
