@@ -27,7 +27,7 @@
                     <label for="password">Wachtwoord:</label>
                     <input type="password" id="password" name="password">
                 </div>
-                <button type="submit">Account aan maken!</button>
+                <button class="btn btn-primary buttonMarginTop" type="submit">Account aan maken!</button>
             </form>
         </div>
     </div>

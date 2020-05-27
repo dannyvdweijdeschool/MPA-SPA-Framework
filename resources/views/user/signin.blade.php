@@ -23,7 +23,7 @@
                     <label for="password">Wachtwoord:</label>
                     <input type="password" id="password" name="password">
                 </div>
-                <button type="submit">Log in!</button>
+                <button class="btn btn-primary buttonMarginTop" type="submit">Log in!</button>
             </form>
         </div>
     </div>

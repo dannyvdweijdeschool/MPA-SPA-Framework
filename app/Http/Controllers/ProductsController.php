@@ -97,4 +97,11 @@ class ProductsController extends Controller
         $cart = new Cart();
         return view("products.cart")->with("cart", $cart);
     }
+
+    /**
+     * 
+     */
+    public function checkout(){
+        return view("products.checkout");
+    }
 }

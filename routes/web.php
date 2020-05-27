@@ -15,16 +15,17 @@ Route::get("/", [
     "uses" => "PagesController@home",
     "as" => "pages.home"
 ]);
+
 Route::get("/home", "PagesController@home");
 
 Route::post("/add-to-cart/{id}", [
     "uses" => "ProductsController@addToCart",
-    "as" => "product.add"
+    "as" => "products.add"
 ]);
 
 Route::post("/change-cart-items", [
     "uses" => "ProductsController@changeCartItems",
-    "as" => "product.changeAmount"
+    "as" => "products.changeAmount"
 ]);
 
 Route::get("/delete-from-cart/{id}", [
@@ -35,6 +36,11 @@ Route::get("/delete-from-cart/{id}", [
 Route::get("/cart", [
     "uses" => "ProductsController@showCart",
     "as" => "pages.cart"
+]);
+
+Route::get("/checkout", [
+    "uses" => "ProductsController@checkout",
+    "as" => "products.checkout"
 ]);
 
 Route::resource("categories", "CategoriesController");
