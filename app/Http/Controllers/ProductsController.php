@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Order;
 use App\Cart;
 
 use Session;
+use Auth;
 
 class ProductsController extends Controller
 {
@@ -99,9 +101,22 @@ class ProductsController extends Controller
     }
 
     /**
-     * 
+     * Loads the checkout view.
      */
     public function checkout(){
         return view("products.checkout");
+    }
+
+    public function postCheckout(Request $request){
+        if(Session::has("cart")){
+            $cart = new Cart();
+            $order = new Order();
+            $order->cart = serialize($cart);
+            $order->name = $request->input("name");
+    
+            Auth::user()->orders()->save($order);
+            Session::forget("cart");
+            return redirect()->route("user.profile");
+        }
     }
 }

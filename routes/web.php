@@ -43,6 +43,11 @@ Route::get("/checkout", [
     "as" => "products.checkout"
 ]);
 
+Route::post("/checkout", [
+    "uses" => "ProductsController@postCheckout",
+    "as" => "products.checkout"
+]);
+
 Route::resource("categories", "CategoriesController");
 Route::resource("categories.products", "ProductsController");
 
