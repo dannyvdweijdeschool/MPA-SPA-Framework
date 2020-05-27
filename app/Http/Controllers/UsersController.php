@@ -26,7 +26,9 @@ class UsersController extends Controller
         ]);
         $user->save();
 
-        return redirect()->route("pages.home");
+        Auth::login($user);
+
+        return redirect()->route("user.profile");
     }
 
     public function getSignin(){

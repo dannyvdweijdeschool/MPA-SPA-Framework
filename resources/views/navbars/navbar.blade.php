@@ -18,9 +18,12 @@
             <i class="fas fa-shopping-cart"></i>
             <span>{{Session::has("cart") ? Session::get("cart")->totalQty : 0}}</span>
         </a>
-        <a class="btn btn-primary" id="login" href="/user/signin">Login</a>
-        <a class="btn btn-primary" id="register" href="/user/signup">Registreer</a>
-        <a id="profile" href="user/profile">Profiel</a>
-        <a class="btn btn-primary" id="signout" href="/user/signout">Log uit</a>
+        @if(Auth::check())
+            <a class="btn btn-primary firstLink" href="/user/profile">Profiel</a>
+            <a class="btn btn-primary" href="/user/signout">Log uit</a>
+        @else
+            <a class="btn btn-primary firstLink" href="/user/signin">Login</a>
+            <a class="btn btn-primary" href="/user/signup">Registreer</a>
+        @endif
     </div>
 </nav>
