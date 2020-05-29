@@ -25,6 +25,7 @@
                 </div>
                 <button class="btn btn-primary buttonMarginTop" type="submit">Log in!</button>
             </form>
+            <p>Nog geen account?<a id="registerNow" href="/user/signup">Registreer hier!</a></p>
         </div>
     </div>
 </div>

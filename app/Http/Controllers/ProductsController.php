@@ -107,6 +107,12 @@ class ProductsController extends Controller
         return view("products.checkout");
     }
 
+    /**
+     * Saves the order of the user to the database.
+     * 
+     * @param $cart = the cart of the user.
+     * @param $order = the cart made into an order.
+     */
     public function postCheckout(Request $request){
         if(Session::has("cart")){
             $cart = new Cart();

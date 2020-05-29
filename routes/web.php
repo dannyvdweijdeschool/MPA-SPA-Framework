@@ -38,16 +38,6 @@ Route::get("/cart", [
     "as" => "pages.cart"
 ]);
 
-Route::get("/checkout", [
-    "uses" => "ProductsController@checkout",
-    "as" => "products.checkout"
-]);
-
-Route::post("/checkout", [
-    "uses" => "ProductsController@postCheckout",
-    "as" => "products.checkout"
-]);
-
 Route::resource("categories", "CategoriesController");
 Route::resource("categories.products", "ProductsController");
 
@@ -78,6 +68,16 @@ Route::group(["prefix" => "user"], function(){
         Route::get("/signout", [
             "uses" => "UsersController@getLogout",
             "as" => "user.signout"
+        ]);
+
+        Route::get("/checkout", [
+            "uses" => "ProductsController@checkout",
+            "as" => "products.checkout"
+        ]);
+
+        Route::post("/checkout", [
+            "uses" => "ProductsController@postCheckout",
+            "as" => "products.checkout"
         ]);
     });
 });

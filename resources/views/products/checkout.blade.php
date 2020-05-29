@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="contentContainer">
-        <form action="/checkout" method="POST">
+        <form action="/user/checkout" method="POST">
             @csrf
             <h1>Betalling</h1>
             <div class="formInputContainer">

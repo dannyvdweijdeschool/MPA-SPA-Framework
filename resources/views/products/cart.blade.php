@@ -27,7 +27,7 @@
                             <p>Totaal aantal producten: {{$cart->totalQty}}</p>
                             <p>Totaal prijs: &#8364;{{$cart->totalPrice}},-</p>
                         </div>
-                        <a class="btn btn-primary buttonMarginTop" href="/checkout">Bestelling afronden</a>
+                        <a class="btn btn-primary buttonMarginTop" href="/user/checkout">Bestelling afronden</a>
                     </div>
                 </form>
             @else
