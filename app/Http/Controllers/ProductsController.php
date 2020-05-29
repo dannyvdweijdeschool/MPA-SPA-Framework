@@ -51,7 +51,6 @@ class ProductsController extends Controller
         $cart = new Cart();
         $cart->add($product[0], $product[0]->product_id,$amount);
 
-        $request->session()->put("cart", $cart);
         return redirect()->route("categories.index");
     }
 
@@ -70,7 +69,6 @@ class ProductsController extends Controller
             $amounts[$id] = $request->input('amount' . $id);
         }
         $cart->checkAmountOfItems($ids, $amounts);
-        $request->session()->put("cart", $cart);
         return view("products.cart")->with("cart", $cart);
     }
 
@@ -83,7 +81,6 @@ class ProductsController extends Controller
     public function deleteFromCart(Request $request,$id){
         $cart = new Cart();
         $cart->deleteItemFromCart($id);
-        $request->session()->put("cart", $cart);
         return view("products.cart")->with("cart", $cart);
     }
 

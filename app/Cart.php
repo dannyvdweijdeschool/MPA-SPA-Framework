@@ -45,6 +45,7 @@ class Cart{
         $this->totalQty += $amount;
         // += = $this->totalPrice = $this->totalPrice + $item->price
         $this->totalPrice += $storedItem["price"];
+        $request->session()->put("cart", $this);
     }
 
     /**
@@ -72,6 +73,7 @@ class Cart{
                 $this->changeAmountOfItem($id,$this->items[$id],$amounts[$id]);
             }
         }
+        $request->session()->put("cart", $this);
     }
 
     /**
@@ -104,5 +106,6 @@ class Cart{
         $this->totalQty -= $this->items[$id]["qty"];
         $this->totalPrice -= $this->items[$id]["price"];
         unset($this->items[$id]);
+        $request->session()->put("cart", $this);
     }
 } 
