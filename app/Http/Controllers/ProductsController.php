@@ -49,7 +49,7 @@ class ProductsController extends Controller
         $amount = $request->input('amount');
         $product = Product::where("product_id", $itemId)->get();
         $cart = new Cart();
-        $cart->add($product[0], $product[0]->product_id,$amount);
+        $cart->add($request,$product[0], $product[0]->product_id,$amount);
 
         return redirect()->route("categories.index");
     }
@@ -68,7 +68,7 @@ class ProductsController extends Controller
         foreach($ids as $id){
             $amounts[$id] = $request->input('amount' . $id);
         }
-        $cart->checkAmountOfItems($ids, $amounts);
+        $cart->checkAmountOfItems($request,$ids, $amounts);
         return view("products.cart")->with("cart", $cart);
     }
 
@@ -80,7 +80,7 @@ class ProductsController extends Controller
      */
     public function deleteFromCart(Request $request,$id){
         $cart = new Cart();
-        $cart->deleteItemFromCart($id);
+        $cart->deleteItemFromCart($request,$id);
         return view("products.cart")->with("cart", $cart);
     }
 

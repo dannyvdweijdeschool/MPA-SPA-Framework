@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Http\Request;
 use Session;
 
 class Cart{
@@ -31,7 +32,7 @@ class Cart{
      * @param int $id = id of the selected item.
      * @param int $amount = Amount of the selected item. 
      */
-    public function add($item, $id,$amount){
+    public function add(Request $request, $item, $id,$amount){
         $storedItem = ["qty" => 0, "price" => $item->product_price, "item" => $item];
         if($this->items){
             if(array_key_exists($id, $this->items)){
@@ -67,10 +68,10 @@ class Cart{
      * @param $ids = Array with all the ids form the items that are in the cart.
      * @param int $amounts = The amounts taken from the inputs.
      */
-    public function checkAmountOfItems($ids, $amounts){
+    public function checkAmountOfItems(Request $request, $ids, $amounts){
         foreach($ids as $id){
             if($this->items[$id]["qty"] != $amounts[$id]){
-                $this->changeAmountOfItem($id,$this->items[$id],$amounts[$id]);
+                $this->changeAmountOfItem($request,$id,$this->items[$id],$amounts[$id]);
             }
         }
         $request->session()->put("cart", $this);
@@ -83,9 +84,9 @@ class Cart{
      * @param $item = The item itself.
      * @param int $newAmount = The new amount of the item.
      */
-    public function changeAmountOfItem($id,$item,$newAmount){
+    public function changeAmountOfItem(Request $request,$id,$item,$newAmount){
         if($newAmount <= 0){
-            $this->deleteItemFromCart($id);
+            $this->deleteItemFromCart($request,$id);
         }else{
             $this->totalPrice -= $item["price"];
             $this->totalQty -= $item["qty"];
@@ -102,7 +103,7 @@ class Cart{
      * 
      * @param int $id = id of the item.
      */
-    public function deleteItemFromCart($id){
+    public function deleteItemFromCart(Request $request, $id){
         $this->totalQty -= $this->items[$id]["qty"];
         $this->totalPrice -= $this->items[$id]["price"];
         unset($this->items[$id]);
