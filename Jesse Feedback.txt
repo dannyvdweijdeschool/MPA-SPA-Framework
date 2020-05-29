@@ -1,0 +1,8 @@
+Ziet er allemaal goed uit.
+Goed dat je eloquent gebruikt.
+Je cart ziet er goed uit.
+Netjes dat je overal commentaar heb opgeschreven bij alles.
+Goede schijding tussen lagen(front-end back-end).
+Communicatie met de session kan je verwerken in je cart. Dit help met het goed schijden tussen de lagen.
+Het zou mooier zijn als je niet heel het object in de session zet maar een array.
+Ik zou niet echt andere verbeter punten kunnen bedenken.
