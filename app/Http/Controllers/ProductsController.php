@@ -7,6 +7,7 @@ use App\Product;
 use App\Order;
 use App\Cart;
 use App\Category;
+use App\OrderProduct;
 
 use Session;
 use Auth;
@@ -115,10 +116,20 @@ class ProductsController extends Controller
         if(Session::has("cart")){
             $cart = new Cart();
             $order = new Order();
-            $order->cart = serialize($cart);
             $order->name = $request->input("name");
+            $order->user_id = Auth::id();
+            $order->total_price = $cart->totalPrice;
     
-            Auth::user()->orders()->save($order);
+            $order = Auth::user()->orders()->save($order);
+            foreach($cart->items as $item){
+                $orderItem = new OrderProduct([
+                    "order_id" => $order->id,
+                    "product_id" => $item->item->product_id,
+                    "product_amount" => $item->qty,
+                    "total_price" => $item->price 
+                ]);
+                $orderItem->save();
+            }
             Session::forget("cart");
             return redirect()->route("user.profile");
         }

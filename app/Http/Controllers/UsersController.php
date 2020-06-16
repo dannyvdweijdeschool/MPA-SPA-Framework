@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\OrderProduct;
 use Auth;
 use Session;
 
@@ -87,11 +88,11 @@ class UsersController extends Controller
      */
     public function getProfile(){
         $orders = Auth::user()->orders;
-        $orders->transform(function($order, $key){
-            $order->cart = unserialize($order->cart);
-            return $order;
-        });
-        return view("user.profile")->with("orders", $orders);
+        $orderItems = [];
+        foreach($orders as $order){
+            $orderItems[$order->id] = OrderProduct::where('order_id', $order->id)->get();
+        }
+        return view("user.profile")->with("orders", $orders)->with("orderItems", $orderItems);
     }
 
     /**

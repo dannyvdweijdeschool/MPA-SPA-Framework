@@ -12,4 +12,11 @@ class Order extends Model
     public function user(){
         return $this->belongsTo("App\User");
     }
+
+    /**
+     * Is a relation to the products.
+     */
+    public function orderProducts(){
+        return $this->hasMany("App\OrderProduct");
+    } 
 }
