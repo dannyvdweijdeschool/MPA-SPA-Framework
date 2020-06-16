@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Order;
 use App\Cart;
+use App\Category;
 
 use Session;
 use Auth;
 
 class ProductsController extends Controller
-{
+{ 
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +20,8 @@ class ProductsController extends Controller
      */
     public function index($id)
     {
-        //verander naar eloquent 
-        $products = Product::where("category_id", $id)->get();
-        $products = $products->sortBy("product_name");
+        $category = Category::find($id);
+        $products = $category->products;
         return view("products.index")->with("products", $products);
     }
 
