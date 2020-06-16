@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Http\Request;
 use Session;
+use App\StoredItem;
 
 class Cart{
     public $items = null;
@@ -33,19 +34,19 @@ class Cart{
      * @param int $amount = Amount of the selected item. 
      */
     public function add(Request $request, $item, $id,$amount){
-        $storedItem = ["qty" => 0, "price" => $item->product_price, "item" => $item];
+        $storedItem = new StoredItem($item);
         if($this->items){
             if(array_key_exists($id, $this->items)){
                 $storedItem = $this->items[$id];
-                $this->totalPrice -= $storedItem["price"];
+                $this->totalPrice -= $storedItem->price;
             }
         }
-        $storedItem["qty"] += $amount;
-        $storedItem["price"] = $item->product_price * $storedItem["qty"];
+        $storedItem->qty += $amount;
+        $storedItem->price = $item->product_price * $storedItem->qty;
         $this->items[$id] = $storedItem;
         $this->totalQty += $amount;
         // += = $this->totalPrice = $this->totalPrice + $item->price
-        $this->totalPrice += $storedItem["price"];
+        $this->totalPrice += $storedItem->price;
         $request->session()->put("cart", $this);
     }
 
@@ -57,7 +58,7 @@ class Cart{
     public function getIdsInCart(){
         $ids = [];
         foreach($this->items as $item){
-            array_push($ids, $item["item"]["product_id"]);
+            array_push($ids, $item->item->product_id);
         }
         return $ids;
     }
@@ -88,12 +89,12 @@ class Cart{
         if($newAmount <= 0){
             $this->deleteItemFromCart($request,$id);
         }else{
-            $this->totalPrice -= $item["price"];
-            $this->totalQty -= $item["qty"];
+            $this->totalPrice -= $item->price;
+            $this->totalQty -= $item->qty;
             $this->totalQty += $newAmount;
-            $item["qty"] = $newAmount;
-            $item["price"] = $item["qty"] * $item["item"]["product_price"];
-            $this->totalPrice += $item["price"];
+            $item->qty = $newAmount;
+            $item->price = $item->qty * $item->item->product_price;
+            $this->totalPrice += $item->price;
             $this->items[$id] = $item;
         }
     }
@@ -104,8 +105,8 @@ class Cart{
      * @param int $id = id of the item.
      */
     public function deleteItemFromCart(Request $request, $id){
-        $this->totalQty -= $this->items[$id]["qty"];
-        $this->totalPrice -= $this->items[$id]["price"];
+        $this->totalQty -= $this->items[$id]->qty;
+        $this->totalPrice -= $this->items[$id]->price;
         unset($this->items[$id]);
         $request->session()->put("cart", $this);
     }

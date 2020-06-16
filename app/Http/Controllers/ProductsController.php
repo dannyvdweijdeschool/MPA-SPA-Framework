@@ -19,6 +19,7 @@ class ProductsController extends Controller
      */
     public function index($id)
     {
+        //verander naar eloquent 
         $products = Product::where("category_id", $id)->get();
         $products = $products->sortBy("product_name");
         return view("products.index")->with("products", $products);
