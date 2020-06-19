@@ -14,7 +14,7 @@ class Order extends Model
     }
 
     /**
-     * Is a relation to the products.
+     * Is a relation to the orderProducts.
      */
     public function orderProducts(){
         return $this->hasMany("App\OrderProduct");

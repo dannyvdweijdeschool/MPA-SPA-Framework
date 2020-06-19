@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\OrderProduct;
+use App\Product;
 use Auth;
 use Session;
 
@@ -84,15 +85,26 @@ class UsersController extends Controller
      * 
      * @param $orders = all the orders of the user.
      * @param $order = a order of the user.
-     * @param int $key = the key of the $order.
+     * @param $orderProducts = products from the orders.
+     * @param $products = the products that are in the order.
+     * @param $orderItems = the products from one order.
+     * @param $orderItem = one product from one order.
      */
     public function getProfile(){
         $orders = Auth::user()->orders;
-        $orderItems = [];
+        $orderProducts = [];
+        $products = [];
         foreach($orders as $order){
-            $orderItems[$order->id] = OrderProduct::where('order_id', $order->id)->get();
+            $orderProducts[$order->id] = OrderProduct::where('order_id', $order->id)->get();
         }
-        return view("user.profile")->with("orders", $orders)->with("orderItems", $orderItems);
+        foreach($orderProducts as $orderItems){
+            foreach($orderItems as $orderItem){
+                if(!array_key_exists($orderItem->product_id, $products)){
+                    $products[$orderItem->product_id] = Product::where('product_id', $orderItem->product_id)->get();
+                }
+            }
+        }
+        return view("user.profile")->with("orders", $orders)->with("orderProducts", $orderProducts)->with("products", $products);
     }
 
     /**

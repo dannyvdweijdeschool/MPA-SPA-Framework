@@ -15,4 +15,11 @@ class Product extends Model
     public function category(){
         return $this->belongsTo("App\Category");
     }
+
+    /**
+     * Is a relation to the orderProducts.
+     */
+    public function orderProducts(){
+        return $this->hasMany("App\OrderProducts");
+    }
 }
