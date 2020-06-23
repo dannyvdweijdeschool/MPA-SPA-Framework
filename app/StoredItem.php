@@ -2,9 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class StoredItem extends Model
+class StoredItem
 {
     public $qty;
     public $price;

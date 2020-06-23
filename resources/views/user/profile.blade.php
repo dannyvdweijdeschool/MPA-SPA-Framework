@@ -12,9 +12,9 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Bestellings gegevens</h5>
-                        @foreach($orderProducts[$order->id] as $orderProduct)
+                        @foreach($order->orderProducts as $orderProduct)
                         <p class="card-text">
-                            {{$products[$orderProduct->product_id][0]->product_name}}
+                            {{$orderProduct->product->product_name}}
                             <span>&#8364; {{$orderProduct->total_price}},-</span>
                             <span>{{$orderProduct->product_amount}}x</span>
                         </p>

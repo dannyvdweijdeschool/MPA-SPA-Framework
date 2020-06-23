@@ -84,27 +84,10 @@ class UsersController extends Controller
      * Loads the profile page with all the orders of the user.
      * 
      * @param $orders = all the orders of the user.
-     * @param $order = a order of the user.
-     * @param $orderProducts = products from the orders.
-     * @param $products = the products that are in the order.
-     * @param $orderItems = the products from one order.
-     * @param $orderItem = one product from one order.
      */
     public function getProfile(){
         $orders = Auth::user()->orders;
-        $orderProducts = [];
-        $products = [];
-        foreach($orders as $order){
-            $orderProducts[$order->id] = OrderProduct::where('order_id', $order->id)->get();
-        }
-        foreach($orderProducts as $orderItems){
-            foreach($orderItems as $orderItem){
-                if(!array_key_exists($orderItem->product_id, $products)){
-                    $products[$orderItem->product_id] = Product::where('product_id', $orderItem->product_id)->get();
-                }
-            }
-        }
-        return view("user.profile")->with("orders", $orders)->with("orderProducts", $orderProducts)->with("products", $products);
+        return view("user.profile")->with("orders", $orders);
     }
 
     /**

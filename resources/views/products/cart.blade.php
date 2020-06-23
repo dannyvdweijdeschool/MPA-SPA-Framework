@@ -14,9 +14,9 @@
                             <div class="cartContainerRow">
                                 <h3>{{$product->item->product_name}}</h3>
                                 <p>Aantal stuks:</p>
-                                <input class="inputAmount" name="amount{{$product->item->product_id}}" type="number" value="{{$product->qty}}">
+                                <input class="inputAmount" name="amount{{$product->item->id}}" type="number" value="{{$product->qty}}">
                                 <p>prijs: &#8364;{{$product->price}},-</p>
-                                <a href="/delete-from-cart/{{$product->item->product_id}}">
+                                <a href="/delete-from-cart/{{$product->item->id}}">
                                     <i class="fas fa-times"></i>
                                 </a>
                             </div>

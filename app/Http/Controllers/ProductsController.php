@@ -21,7 +21,7 @@ class ProductsController extends Controller
      */
     public function index($id)
     {
-        $category = Category::find($id);
+        $category = Category::findOrFail($id);
         $products = $category->products;
         return view("products.index")->with("products", $products);
     }
@@ -35,7 +35,7 @@ class ProductsController extends Controller
      */
     public function show($id, $productId)
     {
-        $product = Product::where("product_id", $productId)->get();
+        $product = Product::where("id", $productId)->get();
         return view("products.show")->with("product", $product);
     }
 
@@ -49,9 +49,9 @@ class ProductsController extends Controller
      */
     public function addToCart(Request $request, $itemId){
         $amount = $request->input('amount');
-        $product = Product::where("product_id", $itemId)->get();
+        $product = Product::where("id", $itemId)->get();
         $cart = new Cart();
-        $cart->add($request,$product[0], $product[0]->product_id,$amount);
+        $cart->add($request,$product[0], $product[0]->id,$amount);
 
         return redirect()->route("categories.index");
     }
@@ -124,7 +124,7 @@ class ProductsController extends Controller
             foreach($cart->items as $item){
                 $orderItem = new OrderProduct([
                     "order_id" => $order->id,
-                    "product_id" => $item->item->product_id,
+                    "product_id" => $item->item->id,
                     "product_amount" => $item->qty,
                     "total_price" => $item->price 
                 ]);

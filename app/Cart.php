@@ -58,7 +58,7 @@ class Cart{
     public function getIdsInCart(){
         $ids = [];
         foreach($this->items as $item){
-            array_push($ids, $item->item->product_id);
+            array_push($ids, $item->item->id);
         }
         return $ids;
     }
@@ -71,7 +71,7 @@ class Cart{
      */
     public function checkAmountOfItems(Request $request, $ids, $amounts){
         foreach($ids as $id){
-            if($this->items[$id]["qty"] != $amounts[$id]){
+            if($this->items[$id]->qty != $amounts[$id]){
                 $this->changeAmountOfItem($request,$id,$this->items[$id],$amounts[$id]);
             }
         }

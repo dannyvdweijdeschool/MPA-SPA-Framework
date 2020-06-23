@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <form action="/add-to-cart/{{$product[0]->product_id}}" method="POST">
+    <form action="/add-to-cart/{{$product[0]->id}}" method="POST">
         @csrf
         <div class="contentContainer">
             <h1>{{$product[0]->product_name}}</h1>
